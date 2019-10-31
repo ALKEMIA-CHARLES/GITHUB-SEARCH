@@ -29,7 +29,7 @@ export class ApiRequestService {
         .get<ApiResponse>(
           "https://api.github.com/users/" +
             useToRequest +
-            "/repos?access_token=" +
+            "?access_token=" +
             environment.token
         )
         .toPromise()
@@ -40,8 +40,34 @@ export class ApiRequestService {
           this.user.username = response.login;
         });
     });
-    // console.log(this.user);
 
     return this.user;
+  }
+
+  fetchRepos(userToFetch){
+    interface UserReposResponse{
+      repos:Repository[]
+      name:string;
+      html_url: string;
+    }
+
+    let promise = new Promise((resolve, reject) => {
+      this.http
+        .get<UserReposResponse>(
+          "https://api.github.com/users/" +
+          userToFetch +
+          "?access_token=" +
+          environment.token
+        )
+        .toPromise()
+        .then(response => {
+          console.log(response);
+
+          this.repository.name = response.name;
+          this.repository.html_url = response.html_url
+        });
+    });
+
+    return this.repository;
   }
 }
