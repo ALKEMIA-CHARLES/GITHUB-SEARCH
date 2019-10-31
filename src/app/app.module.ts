@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { MainpartComponent } from './mainpart/mainpart.component';
+import { ShowReposComponent } from './show-repos/show-repos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainpartComponent
+    MainpartComponent,
+    ShowReposComponent
   ],
   imports: [
     BrowserModule,
