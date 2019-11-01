@@ -5,17 +5,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { MainpartComponent } from './mainpart/mainpart.component';
 import { ShowReposComponent } from './show-repos/show-repos.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     MainpartComponent,
-    ShowReposComponent
+    ShowReposComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule 
+    HttpClientModule,
+    AppRoutingModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

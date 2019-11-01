@@ -16,7 +16,7 @@ export class MainpartComponent implements OnInit {
   user: User;
   repos: Repository;
   repositories: any;
-  show = false;
+  show = false; 
 
   submitUsername() {
     this.user = this.apiRequestInstance.apiRequest(this.searchTerm);
@@ -30,7 +30,7 @@ export class MainpartComponent implements OnInit {
   }
 
   loadRepos() {
-    this.show = !this.show;
+    // this.show = !this.show;
     this.reposToShow = this.apiRequestInstance.fetchRepos(this.searchTerm);
     console.log(this.reposToShow);
   }
