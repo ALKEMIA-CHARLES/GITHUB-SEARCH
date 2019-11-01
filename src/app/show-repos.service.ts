@@ -1,44 +1,57 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "./../environments/environment";
-import{Repository} from "../app/repository";
-
+import { Repository } from "../app/repository";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ShowReposService {
-  repository: Repository;
-  constructor(private http: HttpClient) {
+  repository: Repository = new Repository("", "");
+  constructor(private http: HttpClient) {}
 
-   }
+  username: string;
 
-  fetchRepos(userToFetch:string) {
-    interface UserReposResponse {
-      repos: Repository[]
-      name: string;
-      html_url: string;
-    }
+  // fetchRepos(userToFetch:string) {
+  //   interface UserReposResponse {
+  //     repos: Repository[]
+  //     name: string;
+  //     html_url: string;
+  //   }
 
-    let promise = new Promise((resolve, reject) => {
-      this.http
-        .get<UserReposResponse>(
-          "https://api.github.com/users/repos" +
-          userToFetch +
-          "?access_token=" +
-          environment.token
-        )
-        .toPromise()
-        .then(response => {
-          console.log(response);
+  //   let promise = new Promise((resolve, reject) => {
+  //     this.http
+  //       .get<UserReposResponse>(
+  //         "https://api.github.com/users/" +
+  //         userToFetch +
+  //         "/repos?access_token=" +
+  //         environment.token
+  //       )
+  //       .toPromise()
+  //       .then(response => {
+  //         console.log(response);
+  //         this.repository.name = response.name;
+  //         this.repository.html_url = response.html_url
 
-          this.repository.name = response.name;
-          this.repository.html_url = response.html_url
-        });
-    });
+  //         console.log(this.repository);
 
-    return this.repository;
+  //       });
+  //   });
+
+  getRepos() {
+    return this.http.get(
+      "https://api.github.com/users/" +
+        this.username +
+        "/repos?access_token=" +
+        environment.token
+    );
   }
 
+  searchUser(username) {
+    this.username = username;
+  }
+  // console.log(this.repository);
 
+  // return this.repository;
+  // }
 }

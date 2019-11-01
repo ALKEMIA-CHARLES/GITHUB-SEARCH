@@ -2,18 +2,15 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import { User } from "../user";
-
+import { resolve } from "q";
 
 @Injectable({
   providedIn: "root"
 })
 export class ApiRequestService {
-  
   user: User = new User("", "");
 
-  constructor(private http: HttpClient) {
-
-  }
+  constructor(private http: HttpClient) {}
 
   apiRequest(useToRequest: string) {
     interface ApiResponse {
@@ -43,30 +40,30 @@ export class ApiRequestService {
     return this.user;
   }
 
-  // fetchRepos(userToFetch){
-  //   interface UserReposResponse{
-  //     repos:Repository[]
-  //     name:string;
-  //     html_url: string;
-  //   }
+  reposResponse: any;
+  fetchRepos(useToRequest) {
+    interface UserReposResponse {
+      name: string;
+      html_url: string;
+    }
 
-  //   let promise = new Promise((resolve, reject) => {
-  //     this.http
-  //       .get<UserReposResponse>(
-  //         "https://api.github.com/users/" +
-  //         userToFetch +
-  //         "?access_token=" +
-  //         environment.token
-  //       )
-  //       .toPromise()
-  //       .then(response => {
-  //         console.log(response);
+    let promise = new Promise((resolve, reject) => {
+      this.http
+        .get(
+          "https://api.github.com/users/" +
+            useToRequest +
+            "/repos?access_token=" +
+            environment.token
+        )
+        .toPromise()
+        .then(response => {
+          this.reposResponse = Array.from(response);
 
-  //         this.repository.name = response.name;
-  //         this.repository.html_url = response.html_url
-  //       });
-  //   });
+          resolve();
+        });
+    });
+    console.log(this.reposResponse);
 
-  //   return this.repository;
-  // }
+    return this.reposResponse;
+  }
 }

@@ -14,12 +14,13 @@ repository:Repository;
   constructor(private apiRequestInstance: ShowReposService) { }
 
   ngOnInit() {
-    this.repository = this.apiRequestInstance.fetchRepos("ibrahnerd7");
-    console.log(this.repository)
+    // this.repository = this.apiRequestInstance.getRepos("ibrahnerd7");
+    // console.log(this.repository)
   }
 
   loadrepos() {
 
     this.repository = this.repository;
+    // this.isShow = !this.isShow;
   }
 }

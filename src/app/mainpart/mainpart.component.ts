@@ -1,26 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-import {NgForm} from '@angular/forms';
-import { ApiRequestService} from '../API-HTTP/api-request.service'
-import { User } from '../user';
-
+import { Component, OnInit } from "@angular/core";
+import { NgForm } from "@angular/forms";
+import { ApiRequestService } from "../API-HTTP/api-request.service";
+import { User } from "../user";
+import { ShowReposService } from "../show-repos.service";
+import { Repository } from "../repository";
 
 @Component({
-  selector: 'app-mainpart',
-  templateUrl: './mainpart.component.html',
-  styleUrls: ['./mainpart.component.css']
+  selector: "app-mainpart",
+  templateUrl: "./mainpart.component.html",
+  styleUrls: ["./mainpart.component.css"]
 })
 export class MainpartComponent implements OnInit {
-user:User;
+  searchTerm: string;
+  reposToShow: any[];
+  user: User;
+  repos: Repository;
+  repositories: any;
+  show = false;
 
-  constructor(private apiRequestInstance:ApiRequestService) { }
+  submitUsername() {
+    this.user = this.apiRequestInstance.apiRequest(this.searchTerm);
+    console.log(this.user);
+  }
+  constructor(
+    private apiRequestInstance: ApiRequestService 
+  ) {}
 
   ngOnInit() {
-   this.user= this.apiRequestInstance.apiRequest("ibrahnerd7");
-   console.log(this.user);
-   
   }
 
-  
-
+  loadRepos() {
+    this.show = !this.show;
+    this.reposToShow = this.apiRequestInstance.fetchRepos(this.searchTerm);
+    console.log(this.reposToShow);
+  }
 }
-// 'https://api.github.com/users/daneden?access_token=' + 959f1108df43890ecd42fd93fff56bb1d2691044
+

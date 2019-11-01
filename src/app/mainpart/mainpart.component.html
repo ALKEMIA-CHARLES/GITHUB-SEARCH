@@ -1,30 +1,31 @@
-
 <div class="row">
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-          <form #myform = "ngForm" (ngsubmit) = "onSubmit(myform)">
-               <div class="col-auto">
-                 <label class="sr-only" for="inlineFormInputGroup">Username</label>
-                 <div class="input-group mb-2">
-                   <div class="input-group-prepend">
-                     <div class="input-group-text">@</div>
-                   </div>
-                   <input type="text" class="form-control" id="inlineFormInputGroup" name = "username"placeholder="Username" ngModel>
-                 </div>
-               </div>
-               <div class="col-auto">
-                 <div class="form-check mb-2">
-                   <input class="form-check-input" type="checkbox" id="autoSizingCheck">
-                   <label class="form-check-label" for="autoSizingCheck">
-                     Remember me
-                   </label>
-                 </div>
-               </div>
-               <div class="col-auto">
-                 <button type="submit" class="btn btn-primary mb-2">Submit</button>
-               </div>
-          </form>
+        <form #myform="ngForm" (ngsubmit)="submitUsername()">
+          <div class="col-auto">
+            <label class="sr-only" for="inlineFormInputGroup">Username</label>
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">@</div>
+              </div>
+              <input type="text" class="form-control" id="username" name="username" placeholder="Username"
+                [(ngModel)]='searchTerm'>
+            </div>
+            {{searchTerm}}
+          </div>
+          <div class="col-auto">
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="autoSizingCheck">
+              <label class="form-check-label" for="autoSizingCheck">
+                Remember me
+              </label>
+            </div>
+          </div>
+          <div class="col-auto">
+            <button type="submit" (click)="submitUsername()" class="btn btn-primary mb-2">Submit</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -34,9 +35,17 @@
         <h5 class="card-title">{{user.username}}</h5>
         <img [src]='user.image'>
         <p class="card-text"></p>
-        <button type="button" (click)=loadrepos()>View Repositories</button>
+        <button type="button" (click)=loadRepos()>View Repositories</button>
+
+        <div>
+          <ul *ngFor="let repo of reposToShow">
+            <li>{{repo.name}}</li>
+          </ul>
+        </div>
+
       </div>
     </div>
   </div>
 </div>
-<app-show-repos></app-show-repos>
+<!-- (click)=toggleDisplay() -->
+<!-- <app-show-repos></app-show-repos> -->
