@@ -8,6 +8,7 @@ import { ShowReposComponent } from './show-repos/show-repos.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { DatePipePipe } from './date-pipe.pipe';
+import { HomeComponentComponent } from './home-component/home-component.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { DatePipePipe } from './date-pipe.pipe';
     MainpartComponent,
     ShowReposComponent,
     ContactUsComponent,
-    DatePipePipe
+    DatePipePipe,
+    HomeComponentComponent
   ],
   imports: [
     BrowserModule,
