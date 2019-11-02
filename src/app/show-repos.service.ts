@@ -7,8 +7,10 @@ import { Repository } from "../app/repository";
   providedIn: "root"
 })
 export class ShowReposService {
-  repository: Repository = new Repository("", "");
-  constructor(private http: HttpClient) {}
+  http:HttpClient;allrepos :Repository[]
+  constructor(http: HttpClient) {
+    this.http = http;
+  }
 
   username: string;
 

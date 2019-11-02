@@ -4,6 +4,7 @@ import { ApiRequestService } from "../API-HTTP/api-request.service";
 import { User } from "../user";
 import { ShowReposService } from "../show-repos.service";
 import { Repository } from "../repository";
+import { DatePipePipe} from "../date-pipe.pipe"
 
 @Component({
   selector: "app-mainpart",
@@ -17,6 +18,7 @@ export class MainpartComponent implements OnInit {
   repos: Repository;
   repositories: any;
   show = false;
+  completeDate:DatePipePipe
 
   constructor(private apiRequestInstance: ApiRequestService) {}
 
@@ -29,7 +31,7 @@ export class MainpartComponent implements OnInit {
 
   loadRepos() {
     // this.show = !this.show;
-    this.apiRequestInstance.fetchRepos(this.searchTerm);
-    console.log(this.searchTerm);
+    // this.apiRequestInstance.fetchRepos(this.searchTerm);
+    console.log(this.reposToShow);
   }
 }
