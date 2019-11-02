@@ -12,27 +12,24 @@ import { Repository } from "../repository";
 })
 export class MainpartComponent implements OnInit {
   searchTerm: string;
-  reposToShow: any[];
+  reposToShow: Repository[];
   user: User;
   repos: Repository;
   repositories: any;
-  show = false; 
+  show = false;
+
+  constructor(private apiRequestInstance: ApiRequestService) {}
 
   submitUsername() {
     this.user = this.apiRequestInstance.apiRequest(this.searchTerm);
     console.log(this.user);
   }
-  constructor(
-    private apiRequestInstance: ApiRequestService 
-  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   loadRepos() {
     // this.show = !this.show;
-    this.reposToShow = this.apiRequestInstance.fetchRepos(this.searchTerm);
-    console.log(this.reposToShow);
+    this.apiRequestInstance.fetchRepos(this.searchTerm);
+    console.log(this.searchTerm);
   }
 }
-

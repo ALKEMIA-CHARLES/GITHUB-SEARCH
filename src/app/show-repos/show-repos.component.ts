@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { ShowReposService } from '../show-repos.service'
-import {Repository} from '../repository'
+import { Component, OnInit } from "@angular/core";
+import { ShowReposService } from "../show-repos.service";
+import { Repository } from "../repository";
 
 @Component({
-  selector: 'app-show-repos',
-  templateUrl: './show-repos.component.html',
-  styleUrls: ['./show-repos.component.css'],
+  selector: "app-show-repos",
+  templateUrl: "./show-repos.component.html",
+  styleUrls: ["./show-repos.component.css"]
 })
 export class ShowReposComponent implements OnInit {
-repository:Repository;
+  repository: Repository;
   // isShow = false;
 
-  constructor(private apiRequestInstance: ShowReposService) { }
+  constructor(private apiRequestInstance: ShowReposService) {}
 
   ngOnInit() {
     // this.repository = this.apiRequestInstance.getRepos("ibrahnerd7");
@@ -19,7 +19,6 @@ repository:Repository;
   }
 
   loadrepos() {
-
     this.repository = this.repository;
     // this.isShow = !this.isShow;
   }

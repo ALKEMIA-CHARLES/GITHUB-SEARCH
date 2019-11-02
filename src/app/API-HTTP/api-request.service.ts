@@ -3,15 +3,19 @@ import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import { User } from "../user";
 import { resolve } from "q";
-import { Repository } from '../repository';
+import { Repository } from "../repository";
 
 @Injectable({
   providedIn: "root"
 })
 export class ApiRequestService {
-  user: User = new User("", "");
+  user: User;
+  repositories: Repository;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.user = new User("", "");
+    this.repositories = new Repository("", "");
+  }
 
   apiRequest(useToRequest: string) {
     interface ApiResponse {
@@ -57,14 +61,21 @@ export class ApiRequestService {
             environment.token
         )
         .toPromise()
-        .then(response => {
-          this.reposResponse = Array.from(response);
-
-          resolve();
-        });
+        .then(
+          response => {
+            response = this.repositories;
+            console.log(response);
+            // this.repositories.html_url = html_url;
+            resolve();
+          },
+          error => {
+            console.log(error);
+            reject();
+          }
+        );
     });
-    console.log(this.reposResponse);
+    // console.log(this.reposResponse);
 
-    return this.reposResponse;
+    return promise;
   }
 }
