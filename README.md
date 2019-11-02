@@ -5,6 +5,21 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Author name
+Charles Mtawali Jr
+
+## Description of project
+GitHub-Search is a application that allows users to search for people's GitHub usernames and repositories.
+
+## Project Set Up
+The project was made by the angular framework and used form modules, HTTP Clients and Routing to design the outlay of the project.
+
+## Technolgies used
+CSS
+HTML
+Angular
+Bootstrap
+
 
 ## Code scaffolding
 
