@@ -7,6 +7,7 @@ import { MainpartComponent } from './mainpart/mainpart.component';
 import { ShowReposComponent } from './show-repos/show-repos.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { DatePipePipe } from './date-pipe.pipe';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     AppComponent,
     MainpartComponent,
     ShowReposComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    DatePipePipe
   ],
   imports: [
     BrowserModule,
