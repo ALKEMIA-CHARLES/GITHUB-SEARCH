@@ -10,11 +10,11 @@ import { Repository } from "../repository";
 })
 export class ApiRequestService {
   user: User;
-  repositories: Repository;
+  repositories: Repository[]=[];
 
   constructor(private http: HttpClient) {
     this.user = new User("", "");
-    this.repositories = new Repository("", "");
+    // this.repositories = new Repository("", "");
   }
 
   apiRequest(useToRequest: string) {
