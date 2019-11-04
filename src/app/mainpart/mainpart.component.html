@@ -34,7 +34,7 @@
       <div class="card-body">
         <h5 class="card-title">{{user.username}}</h5>
         <img [src]='user.image'>
-        <!-- <p>This profile was crea created {{quote.completeDate|dateCount }} days ago</p> -->
+        <p>This profile was created on {{user.created_at | datePipe }} days ago</p>
         <p class="card-text"></p>
         <button type="button" (click)=loadRepos()>View Repositories</button>
 

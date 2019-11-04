@@ -23,6 +23,7 @@ export class ApiRequestService {
       repository: string;
       login: string;
       avatar_url: string;
+      created_at:Date;
     }
 
     let promise = new Promise((resolve, reject) => {
